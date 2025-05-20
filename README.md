@@ -1,66 +1,137 @@
-# Spent - Flutter App with Supabase
+# Spent - Expense Tracking App
 
-A Flutter application with Supabase backend integration for managing expenses and transactions.
+A Flutter application for tracking expenses and managing personal finances, built with Flutter and Supabase.
 
-## Setup Instructions
+## Features
 
-1. Install Flutter:
+- **Authentication**
 
-   - Follow the [official Flutter installation guide](https://flutter.dev/docs/get-started/install)
-   - Make sure you have Flutter SDK version 3.0.0 or higher
+  - Email/Password authentication
+  - Google Sign-In
+  - Password reset functionality
+  - Email verification
+  - Secure password requirements
+  - User profile management
 
-2. Clone this repository:
+- **Expense Tracking**
+  - Add and categorize expenses
+  - View expense history
+  - Track spending patterns
+  - Export expense reports
+
+## Getting Started
+
+### Prerequisites
+
+- Flutter SDK (latest version)
+- Dart SDK (latest version)
+- Supabase account
+- Google Cloud account (for Google Sign-In)
+- PowerShell (for Windows users)
+
+### Setup
+
+1. Clone the repository:
 
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/yourusername/spent.git
    cd spent
    ```
 
-3. Install dependencies:
+2. Install dependencies:
 
    ```bash
    flutter pub get
    ```
 
-4. Set up Supabase:
+3. Configure Supabase:
 
-   - Create a new project on [Supabase](https://supabase.com)
-   - Get your project URL and anon key from the project settings
-   - Create a `.env` file in the root directory with the following content:
+   - Create a new project in Supabase
+   - Enable Email and Google authentication providers
+   - Copy your Supabase URL and anon key
+   - Create a `.env` file in the root directory:
      ```
-     SUPABASE_URL=your_supabase_project_url
+     SUPABASE_URL=your_supabase_url
      SUPABASE_ANON_KEY=your_supabase_anon_key
      ```
 
-5. Update the Supabase credentials in `lib/main.dart`:
+4. Configure Google Sign-In:
 
-   - Replace `YOUR_SUPABASE_URL` with your actual Supabase project URL
-   - Replace `YOUR_SUPABASE_ANON_KEY` with your actual Supabase anon key
+   - Create a project in Google Cloud Console
+   - Enable Google Sign-In API
+   - Create OAuth 2.0 credentials
+   - Add authorized domains and redirect URIs
+   - Configure the credentials in Supabase dashboard
 
-6. Run the app:
+5. Run the app:
+
+   **Option 1: Using PowerShell Script (Recommended for Windows)**
+
+   ```powershell
+   .\run.ps1
+   ```
+
+   This script will:
+
+   - Enable web support if not already enabled
+   - Run Flutter pub get to ensure dependencies are up to date
+   - Launch the app in Chrome
+
+   **Option 2: Manual Run**
+
    ```bash
-   flutter run
+   flutter run -d chrome
    ```
 
 ## Project Structure
 
-- `lib/main.dart` - Main application entry point
-- `lib/services/supabase_service.dart` - Supabase service for handling backend operations
-- `lib/models/` - Data models
-- `lib/screens/` - UI screens
-- `lib/widgets/` - Reusable widgets
+```
+lib/
+├── main.dart              # Application entry point
+├── pages/                 # UI pages
+│   ├── login_page.dart    # Login screen
+│   └── signup_page.dart   # Registration screen
+├── services/             # Business logic
+│   └── supabase_service.dart  # Supabase client and methods
+└── widgets/              # Reusable UI components
+```
 
-## Features
+## Authentication Flow
 
-- User authentication (sign up, sign in, sign out)
-- CRUD operations for data management
-- Real-time data synchronization
-- Secure data handling
+1. **Sign Up**
 
-## Dependencies
+   - Users can create an account with email and password
+   - Password must meet security requirements
+   - Email verification is required
+   - User profile information is collected
 
-- Flutter SDK
-- supabase_flutter: ^2.0.0
-- flutter_dotenv: ^5.1.0
-- provider: ^6.0.5
-- go_router: ^13.0.0
+2. **Sign In**
+
+   - Email/password authentication
+   - Google Sign-In option
+   - Password reset functionality
+   - Session management
+
+3. **Security**
+   - Secure password storage
+   - Email verification
+   - Session management
+   - Protected routes
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+
+- Flutter team for the amazing framework
+- Supabase for the backend services
+- Google for authentication services
